@@ -26,8 +26,8 @@ export class EmployeeService {
     return this.http.put<ApiResponse<Employee>>(`${this.apiurl}/${id}`, employee);
   }
 
-  delteEmployee(id:string): Observable<ApiResponse<Employee>>{
-    return this.http.delete<ApiResponse<Employee>>(`${this.apiurl}/${id}`);
+  deleteEmployee(id:string): Observable<any>{
+    return this.http.delete(`${this.apiurl}/${id}`);
   }
 
 }

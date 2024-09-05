@@ -10,4 +10,10 @@ import { CommonModule } from '@angular/common';
 })
 export class ModelComponent {
 
+  @Input() isOpen = false
+  @Output() closeModel =  new EventEmitter()
+
+  onCloseModel() {
+    this.closeModel.emit(false)
+  }
 }
