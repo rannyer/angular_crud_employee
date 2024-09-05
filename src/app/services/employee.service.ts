@@ -10,8 +10,11 @@ export class EmployeeService {
   apiurl = 'http://localhost:3000/employees';
   constructor(private http: HttpClient) {}
 
-  getAllEmployee(): Observable<ApiResponse<Employee[]>>{
-    return this.http.get<ApiResponse<Employee[]>>(this.apiurl);
+  // getAllEmployee(): Observable<ApiResponse<Employee[]>>{
+  //   return this.http.get<ApiResponse<Employee[]>>(this.apiurl);
+  // }
+  getAllEmployee(): Observable<Employee[]>{
+    return this.http.get<Employee[]>(this.apiurl);
   }
 
   getEmployeeById(id:string): Observable<ApiResponse<Employee>>{

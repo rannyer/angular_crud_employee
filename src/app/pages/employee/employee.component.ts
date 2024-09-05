@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModelComponent } from "../shared/ui/model/model.component";
 import { employeeFormComponent } from "../employee-form/employee-form.component";
+import { Employee } from '../shared/models/Employee';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-employee',
@@ -12,11 +14,17 @@ import { employeeFormComponent } from "../employee-form/employee-form.component"
 export class EmployeeComponent implements OnInit {
   isModelOpen = false;
 
-  constructor(
-  
-  ) {}
+  employees: Employee[] = []
+
+  constructor(private employeeService: EmployeeService) {}
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.employeeService.getAllEmployee().subscribe({
+      next:(response) =>{
+        console.log(response)
+        this.employees = response
+      }
+    })
   }
 
   openModel(){
