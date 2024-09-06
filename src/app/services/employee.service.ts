@@ -29,7 +29,7 @@ export class EmployeeService {
     return this.http.put<ApiResponse<Employee>>(`${this.apiurl}/${id}`, employee);
   }
 
-  deleteEmployee(id:string): Observable<any>{
+  deleteEmployee(id?:string): Observable<any>{
     return this.http.delete(`${this.apiurl}/${id}`);
   }
 

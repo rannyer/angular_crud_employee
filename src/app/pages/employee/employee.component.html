@@ -49,9 +49,9 @@
        
         </td>
         <td class="px-6 py-4 text-right">
-          <button type="button"
-            class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-4">Edit</button>
-          <button type="button" 
+          <button type="button" (click)="loadEmployee(employee)"
+            class="font-medium   text-blue-600 dark:text-blue-500 hover:underline mr-4">Edit</button>
+          <button type="button" (click)="deleteEmployee(employee.id)"
             class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
         </td>
       </tr>
@@ -62,5 +62,5 @@
 
 
  <app-model [isOpen]="isModelOpen" (closeModel)="closeModel()" >
-  <app-employee-form (onCloseModel)="closeModel()" ></app-employee-form>
+  <app-employee-form (onCloseModel)="closeModel()" [data]="employee"></app-employee-form>
 </app-model> 

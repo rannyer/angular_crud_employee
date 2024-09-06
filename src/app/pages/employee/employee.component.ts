@@ -3,6 +3,7 @@ import { ModelComponent } from "../shared/ui/model/model.component";
 import { employeeFormComponent } from "../employee-form/employee-form.component";
 import { Employee } from '../shared/models/Employee';
 import { EmployeeService } from '../../services/employee.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-employee',
@@ -16,9 +17,15 @@ export class EmployeeComponent implements OnInit {
 
   employees: Employee[] = []
 
-  constructor(private employeeService: EmployeeService) {}
+  employee!: Employee
+
+  constructor(private employeeService: EmployeeService, private toastService: ToastrService) {}
 
   ngOnInit(): void {
+   this.getAllEmployee()
+  }
+
+  getAllEmployee(){
     this.employeeService.getAllEmployee().subscribe({
       next:(response) =>{
         console.log(response)
@@ -27,12 +34,28 @@ export class EmployeeComponent implements OnInit {
     })
   }
 
+
+  deleteEmployee(id?:string){
+    this.employeeService.deleteEmployee(id).subscribe({
+      next:(response) =>{
+        console.log(response)
+        this.toastService.success("Funcionario Deletado Com Sucesso")
+        this.getAllEmployee()
+      }
+    })
+  }
+
+  loadEmployee(employee:Employee){
+    this.employee = employee
+    this.openModel()
+  }
   openModel(){
     this.isModelOpen = true
   }
 
   closeModel(){
     this.isModelOpen = false
+    this.getAllEmployee()
   }
 
  

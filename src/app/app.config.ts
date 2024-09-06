@@ -10,10 +10,10 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     importProvidersFrom(HttpClientModule),
     provideAnimations(),
-    // provideToastr({
-    //   timeOut: 5000,
-    //   positionClass: 'toast-top-center',
-    //   preventDuplicates: true,
-    // }),
+    provideToastr({
+      timeOut: 5000,
+      positionClass: 'toast-top-center',
+      preventDuplicates: true,
+    }),
   ],
 };
